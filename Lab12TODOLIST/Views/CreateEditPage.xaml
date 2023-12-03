@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Lab12TODOLIST.Views.CreateEditPage"
+            Title="{Binding Title}">
+    <StackLayout Padding="20">
+        <Entry Text="{Binding Title}" Placeholder="Título"/>
+        <Entry Text="{Binding Description}" Placeholder="Descripción"/>
+        <Switch IsToggled="{Binding IsCompleted}"/>
+        <Button Text="Guardar" Command="{Binding SaveCommand}"/>
+        <Button Text="Eliminar" 
+            Command="{Binding DeleteCommand}"
+            IsVisible="{Binding IsEdit}"/>
+    </StackLayout>
+</ContentPage>

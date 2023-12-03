@@ -1,0 +1,64 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab12TODOLIST.MainPage"
+             BackgroundColor="#f0f2f5"
+             Title="Laboratorio15"
+             >
+    <AbsoluteLayout>
+        <!-- ############################ -->
+        <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout>
+                <!-- ###### CollctionView ###### -->
+                <CollectionView ItemsSource="{Binding Tasks}"
+                                Margin="10"
+                                SelectionChanged="onTaskSelecred"
+                                SelectionMode="Single"
+                                >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Margin="5">
+                                <Frame CornerRadius="10" HasShadow="True" HorizontalOptions="FillAndExpand">
+                                    <StackLayout>
+                                        <Label Text="{Binding Title}" FontSize="Medium" TextColor="#222" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Description}" TextColor="#555" FontSize="Small"/>
+                                        <Label Padding="5" HorizontalOptions="Start">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="True">
+                                                    <Setter Property="Text" Value=" Completado papi "/>
+                                                    <Setter Property="BackgroundColor" Value="#dcfce7"/>
+                                                    <Setter Property="TextColor" Value="#16a34a"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="False">
+                                                    <Setter Property="Text" Value=" Te falta ah! "/>
+                                                    <Setter Property="BackgroundColor" Value="#fee2e2"/>
+                                                    <Setter Property="TextColor" Value="#dc2626"/>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Sufrí pa este flotante -->
+        <Frame Padding="0"
+               HasShadow="True"
+               CornerRadius="100"
+               AbsoluteLayout.LayoutFlags="PositionProportional"
+               AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+               Margin="0,0,20,20">
+            <ImageButton Source="agregararchivo.png"
+                         BackgroundColor="#fff"
+                         CornerRadius="100"
+                         WidthRequest="64"
+                         HeightRequest="64"
+                         Padding="12"
+                         Clicked="onAgregarTaskClicked"
+                         />
+        </Frame>
+    </AbsoluteLayout>
+</ContentPage>
